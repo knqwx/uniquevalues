@@ -91,19 +91,20 @@
 
         .tab-content.active {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
             gap: 20px;
             padding-bottom: 24px;
         }
 
-        /* Стили карточек */
+        /* Стили карточек с картинками */
         .card {
             background-color: #1E2028;
             border-radius: 16px;
-            height: 140px;
+            height: 190px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             padding: 16px;
             box-sizing: border-box;
             color: #FFFFFF;
@@ -117,8 +118,23 @@
             transform: translateY(-4px);
         }
 
+        .card-image-container {
+            width: 100%;
+            height: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+        }
+
         .card-title {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
             color: #FFFFFF;
             margin: 0;
@@ -151,20 +167,62 @@
             <div id="evos" class="tab-content"></div>
             <!-- Ancients -->
             <div id="ancients" class="tab-content">
-                <div class="card"><div class="card-title">Nik's Scythe</div></div>
-                <div class="card"><div class="card-title">Gingerscope</div></div>
-                <div class="card"><div class="card-title">Traveler's Axe</div></div>
-                <div class="card"><div class="card-title">Celestial</div></div>
-                <div class="card"><div class="card-title">Vampire's Axe</div></div>
-                <div class="card"><div class="card-title">Harvester</div></div>
-                <div class="card"><div class="card-title">Icepiercer</div></div>
-                <div class="card"><div class="card-title">Icebreaker</div></div>
-                <div class="card"><div class="card-title">Batwing</div></div>
-                <div class="card"><div class="card-title">Elderwood Scythe</div></div>
-                <div class="card"><div class="card-title">Swirly Axe</div></div>
-                <div class="card"><div class="card-title">Hallowscythe</div></div>
-                <div class="card"><div class="card-title">Logchopper</div></div>
-                <div class="card"><div class="card-title">Icewing</div></div>
+                <div class="card">
+                    <div class="card-image-container"><img src="https://images.unsplash.com/photo-1589241062272-c0a000071dfa?w=300" alt="Nik's Scythe"></div>
+                    <div class="card-title">Nik's Scythe</div>
+                </div>
+                <div class="card">
+                    <div class="card-image-container"><img src="https://images.unsplash.com/photo-1589241062272-c0a000071dfa?w=300" alt="Gingerscope"></div>
+                    <div class="card-title">Gingerscope</div>
+                </div>
+                <div class="card">
+                    <div class="card-image-container"><img src="https://images.unsplash.com/photo-1589241062272-c0a000071dfa?w=300" alt="Traveler's Axe"></div>
+                    <div class="card-title">Traveler's Axe</div>
+                </div>
+                <div class="card">
+                    <div class="card-image-container"><img src="https://images.unsplash.com/photo-1589241062272-c0a000071dfa?w=300" alt="Celestial"></div>
+                    <div class="card-title">Celestial</div>
+                </div>
+                <div class="card">
+                    <div class="card-image-container"><img src="https://images.unsplash.com/photo-1589241062272-c0a000071dfa?w=300" alt="Vampire's Axe"></div>
+                    <div class="card-title">Vampire's Axe</div>
+                </div>
+                <div class="card">
+                    <div class="card-image-container"><img src="https://images.unsplash.com/photo-1589241062272-c0a000071dfa?w=300" alt="Harvester"></div>
+                    <div class="card-title">Harvester</div>
+                </div>
+                <div class="card">
+                    <div class="card-image-container"><img src="https://images.unsplash.com/photo-1589241062272-c0a000071dfa?w=300" alt="Icepiercer"></div>
+                    <div class="card-title">Icepiercer</div>
+                </div>
+                <div class="card">
+                    <div class="card-image-container"><img src="https://images.unsplash.com/photo-1589241062272-c0a000071dfa?w=300" alt="Icebreaker"></div>
+                    <div class="card-title">Icebreaker</div>
+                </div>
+                <div class="card">
+                    <div class="card-image-container"><img src="https://images.unsplash.com/photo-1589241062272-c0a000071dfa?w=300" alt="Batwing"></div>
+                    <div class="card-title">Batwing</div>
+                </div>
+                <div class="card">
+                    <div class="card-image-container"><img src="https://images.unsplash.com/photo-1589241062272-c0a000071dfa?w=300" alt="Elderwood Scythe"></div>
+                    <div class="card-title">Elderwood Scythe</div>
+                </div>
+                <div class="card">
+                    <div class="card-image-container"><img src="https://images.unsplash.com/photo-1589241062272-c0a000071dfa?w=300" alt="Swirly Axe"></div>
+                    <div class="card-title">Swirly Axe</div>
+                </div>
+                <div class="card">
+                    <div class="card-image-container"><img src="https://images.unsplash.com/photo-1589241062272-c0a000071dfa?w=300" alt="Hallowscythe"></div>
+                    <div class="card-title">Hallowscythe</div>
+                </div>
+                <div class="card">
+                    <div class="card-image-container"><img src="https://images.unsplash.com/photo-1589241062272-c0a000071dfa?w=300" alt="Logchopper"></div>
+                    <div class="card-title">Logchopper</div>
+                </div>
+                <div class="card">
+                    <div class="card-image-container"><img src="https://images.unsplash.com/photo-1589241062272-c0a000071dfa?w=300" alt="Icewing"></div>
+                    <div class="card-title">Icewing</div>
+                </div>
             </div>
             <!-- Vintages -->
             <div id="vintages" class="tab-content"></div>
