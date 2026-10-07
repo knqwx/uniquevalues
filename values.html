@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unique Values</title>
-    <!-- Подключаем шрифт Consolas / Courier New / моноширинный шрифт, который используется в редакторах кода Python (IDLE / VS Code) -->
+    <!-- Подключаем жирный современный шрифт Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -15,7 +16,8 @@
             box-sizing: border-box;
             padding: 24px;
             gap: 24px;
-            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
         }
 
         .sidebar {
@@ -38,8 +40,8 @@
             color: #8A8D98;
             text-align: left;
             padding: 12px 16px;
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 15px;
+            font-weight: 700;
             border-radius: 10px;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -62,6 +64,7 @@
             display: flex;
             flex-direction: column;
             gap: 24px;
+            overflow: hidden;
         }
 
         .top-bar {
@@ -71,21 +74,12 @@
             border-radius: 16px;
             margin: 0 auto;
             max-width: calc(100% - 40px);
-            display: flex;
-            align-items: center;
-            padding: 0 24px;
-            box-sizing: border-box;
-            color: #FFFFFF;
-            font-size: 18px;
+            flex-shrink: 0;
         }
 
         .content-area {
             flex-grow: 1;
-            background-color: #1E2028;
-            border-radius: 16px;
-            padding: 24px;
-            box-sizing: border-box;
-            color: #FFFFFF;
+            overflow-y: auto;
             max-width: calc(100% - 40px);
             margin: 0 auto;
             width: 100%;
@@ -96,7 +90,44 @@
         }
 
         .tab-content.active {
-            display: block;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding-bottom: 24px;
+        }
+
+        /* Стили карточек */
+        .card {
+            background-color: #1E2028;
+            border-radius: 16px;
+            height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 16px;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            background-color: #252833;
+            transform: translateY(-4px);
+        }
+
+        .card-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin: 0;
+        }
+
+        .card-subtitle {
+            font-size: 12px;
+            font-weight: 600;
+            color: #8A8D98;
+            margin-top: 4px;
         }
     </style>
 </head>
@@ -116,42 +147,70 @@
     </div>
     
     <div class="main-content">
-        <div class="top-bar">
-            <span id="current-title">Sets</span>
-        </div>
+        <div class="top-bar"></div>
         <div class="content-area">
-            <div id="sets" class="tab-content active">Содержимое вкладки: Sets</div>
-            <div id="uniques" class="tab-content">Содержимое вкладки: Uniques</div>
-            <div id="evos" class="tab-content">Содержимое вкладки: Evos</div>
-            <div id="ancients" class="tab-content">Содержимое вкладки: Ancients</div>
-            <div id="vintages" class="tab-content">Содержимое вкладки: Vintages</div>
-            <div id="chromas" class="tab-content">Содержимое вкладки: Chromas</div>
-            <div id="godlies" class="tab-content">Содержимое вкладки: Godlies</div>
-            <div id="legendaries" class="tab-content">Содержимое вкладки: Legendaries</div>
-            <div id="rares" class="tab-content">Содержимое вкладки: Rares</div>
-            <div id="uncommons" class="tab-content">Содержимое вкладки: Uncommons</div>
-            <div id="commons" class="tab-content">Содержимое вкладки: Commons</div>
+            <!-- Sets -->
+            <div id="sets" class="tab-content active">
+                <div class="card"><div class="card-title">Item Name</div><div class="card-subtitle">Value: 150</div></div>
+                <div class="card"><div class="card-title">Item Name</div><div class="card-subtitle">Value: 230</div></div>
+                <div class="card"><div class="card-title">Item Name</div><div class="card-subtitle">Value: 90</div></div>
+                <div class="card"><div class="card-title">Item Name</div><div class="card-subtitle">Value: 410</div></div>
+            </div>
+            <!-- Uniques -->
+            <div id="uniques" class="tab-content">
+                <div class="card"><div class="card-title">Unique Item</div><div class="card-subtitle">Value: 1200</div></div>
+                <div class="card"><div class="card-title">Unique Item</div><div class="card-subtitle">Value: 850</div></div>
+            </div>
+            <!-- Evos -->
+            <div id="evos" class="tab-content">
+                <div class="card"><div class="card-title">Evo Weapon</div><div class="card-subtitle">Value: 500</div></div>
+            </div>
+            <!-- Ancients -->
+            <div id="ancients" class="tab-content">
+                <div class="card"><div class="card-title">Ancient Blade</div><div class="card-subtitle">Value: 340</div></div>
+            </div>
+            <!-- Vintages -->
+            <div id="vintages" class="tab-content">
+                <div class="card"><div class="card-title">Vintage Gun</div><div class="card-subtitle">Value: 75</div></div>
+            </div>
+            <!-- Chromas -->
+            <div id="chromas" class="tab-content">
+                <div class="card"><div class="card-title">Chroma Item</div><div class="card-subtitle">Value: 2500</div></div>
+            </div>
+            <!-- Godlies -->
+            <div id="godlies" class="tab-content">
+                <div class="card"><div class="card-title">Godly Sword</div><div class="card-subtitle">Value: 600</div></div>
+            </div>
+            <!-- Legendaries -->
+            <div id="legendaries" class="tab-content">
+                <div class="card"><div class="card-title">Legendary Item</div><div class="card-subtitle">Value: 25</div></div>
+            </div>
+            <!-- Rares -->
+            <div id="rares" class="tab-content">
+                <div class="card"><div class="card-title">Rare Item</div><div class="card-subtitle">Value: 10</div></div>
+            </div>
+            <!-- Uncommons -->
+            <div id="uncommons" class="tab-content">
+                <div class="card"><div class="card-title">Uncommon Item</div><div class="card-subtitle">Value: 5</div></div>
+            </div>
+            <!-- Commons -->
+            <div id="commons" class="tab-content">
+                <div class="card"><div class="card-title">Common Item</div><div class="card-subtitle">Value: 1</div></div>
+            </div>
         </div>
     </div>
 
     <script>
         function switchTab(tabId, buttonElement) {
-            // Убираем активный класс у всех кнопок
             const buttons = document.querySelectorAll('.nav-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
 
-            // Добавляем активный класс нажатой кнопке
             buttonElement.classList.add('active');
 
-            // Скрываем все блоки контента
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
 
-            // Показываем нужный блок
             document.getElementById(tabId).classList.add('active');
-
-            // Меняем текст в шапке на название выбранной вкладки
-            document.getElementById('current-title').textContent = buttonElement.textContent;
         }
     </script>
 </body>
