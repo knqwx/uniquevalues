@@ -136,7 +136,14 @@
             padding-bottom: 24px;
         }
 
-        /* Секция тира */
+        /* Общий единый контейнер для режима OFF */
+        .flat-container {
+            display: none;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        /* Секция тира (когда ON) */
         .tier-section {
             display: flex;
             flex-direction: column;
@@ -151,10 +158,9 @@
             letter-spacing: 0.5px;
             border-left: 3px solid #4F46E5;
             padding-left: 8px;
-            transition: all 0.2s ease;
         }
 
-        /* Сетка: ровно 3 карточки в ряд */
+        /* Сетка тира: ровно 3 карточки в ряд */
         .tier-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -284,205 +290,211 @@
             <!-- Ancients -->
             <div id="ancients" class="tab-content">
                 
-                <!-- Tier 3 -->
-                <div class="tier-section" data-tier="3">
-                    <div class="tier-title">Tier 3</div>
-                    <div class="tier-grid">
-                        <div class="card">
-                            <div class="card-left">
-                                <div class="card-image-container"><img src="images/NiksScythe.webp" alt="Nik's Scythe"></div>
-                                <div class="card-title">Nik's Scythe</div>
+                <!-- Контейнер с тирами (для режима ON) -->
+                <div id="tiersContainer" style="display: flex; flex-direction: column; gap: 24px;">
+                    <!-- Tier 3 -->
+                    <div class="tier-section" data-tier="3">
+                        <div class="tier-title">Tier 3</div>
+                        <div class="tier-grid">
+                            <div class="card" data-id="niks-scythe">
+                                <div class="card-left">
+                                    <div class="card-image-container"><img src="images/NiksScythe.webp" alt="Nik's Scythe"></div>
+                                    <div class="card-title">Nik's Scythe</div>
+                                </div>
+                                <div class="card-right">
+                                    <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">Priceless</span></div>
+                                    <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">11</span></div>
+                                    <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">11</span></div>
+                                    <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Overpaid For</span></div>
+                                </div>
                             </div>
-                            <div class="card-right">
-                                <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">Priceless</span></div>
-                                <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">11</span></div>
-                                <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">11</span></div>
-                                <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Overpaid For</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Tier 2 -->
+                    <div class="tier-section" data-tier="2">
+                        <div class="tier-title">Tier 2</div>
+                        <div class="tier-grid">
+                            <div class="card" data-id="gingerscope">
+                                <div class="card-left">
+                                    <div class="card-image-container"><img src="images/Gingerscope.webp" alt="Gingerscope"></div>
+                                    <div class="card-title">Gingerscope</div>
+                                </div>
+                                <div class="card-right">
+                                    <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">15,250</span></div>
+                                    <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">5</span></div>
+                                    <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">4</span></div>
+                                    <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Underpaid For</span></div>
+                                </div>
+                            </div>
+
+                            <div class="card" data-id="travelers-axe">
+                                <div class="card-left">
+                                    <div class="card-image-container"><img src="images/TravelersAxe.webp" alt="Traveler's Axe"></div>
+                                    <div class="card-title">Traveler's Axe</div>
+                                </div>
+                                <div class="card-right">
+                                    <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">7,850</span></div>
+                                    <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">5</span></div>
+                                    <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">5</span></div>
+                                    <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Stable</span></div>
+                                </div>
+                            </div>
+
+                            <div class="card" data-id="celestial">
+                                <div class="card-left">
+                                    <div class="card-image-container"><img src="images/Celestial.webp" alt="Celestial"></div>
+                                    <div class="card-title">Celestial</div>
+                                </div>
+                                <div class="card-right">
+                                    <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">2,250</span></div>
+                                    <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">5</span></div>
+                                    <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">4</span></div>
+                                    <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Stable</span></div>
+                                </div>
+                            </div>
+
+                            <div class="card" data-id="vampires-axe">
+                                <div class="card-left">
+                                    <div class="card-image-container"><img src="images/VampiresAxe.webp" alt="Vampire's Axe"></div>
+                                    <div class="card-title">Vampire's Axe</div>
+                                </div>
+                                <div class="card-right">
+                                    <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">1,600</span></div>
+                                    <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">5</span></div>
+                                    <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">4</span></div>
+                                    <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Stable</span></div>
+                                </div>
+                            </div>
+
+                            <div class="card" data-id="harvester">
+                                <div class="card-left">
+                                    <div class="card-image-container"><img src="images/Harvester.webp" alt="Harvester"></div>
+                                    <div class="card-title">Harvester</div>
+                                </div>
+                                <div class="card-right">
+                                    <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">250</span></div>
+                                    <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">3</span></div>
+                                    <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">2</span></div>
+                                    <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Stable</span></div>
+                                </div>
+                            </div>
+
+                            <div class="card" data-id="icepiercer">
+                                <div class="card-left">
+                                    <div class="card-image-container"><img src="images/Icepiercer.webp" alt="Icepiercer"></div>
+                                    <div class="card-title">Icepiercer</div>
+                                </div>
+                                <div class="card-right">
+                                    <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">160</span></div>
+                                    <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">3</span></div>
+                                    <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">2</span></div>
+                                    <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Stable</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tier 1 -->
+                    <div class="tier-section" data-tier="1">
+                        <div class="tier-title">Tier 1</div>
+                        <div class="tier-grid">
+                            <div class="card" data-id="icebreaker">
+                                <div class="card-left">
+                                    <div class="card-image-container"><img src="images/Icebreaker.webp" alt="Icebreaker"></div>
+                                    <div class="card-title">Icebreaker</div>
+                                </div>
+                                <div class="card-right">
+                                    <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">65</span></div>
+                                    <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">1</span></div>
+                                    <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">2</span></div>
+                                    <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Stable</span></div>
+                                </div>
+                            </div>
+
+                            <div class="card" data-id="batwing">
+                                <div class="card-left">
+                                    <div class="card-image-container"><img src="images/Batwing.webp" alt="Batwing"></div>
+                                    <div class="card-title">Batwing</div>
+                                </div>
+                                <div class="card-right">
+                                    <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">42</span></div>
+                                    <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">1</span></div>
+                                    <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">2</span></div>
+                                    <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Stable</span></div>
+                                </div>
+                            </div>
+
+                            <div class="card" data-id="elderwood-scythe">
+                                <div class="card-left">
+                                    <div class="card-image-container"><img src="images/ElderwoodScythe.webp" alt="Elderwood Scythe"></div>
+                                    <div class="card-title">Elderwood Scythe</div>
+                                </div>
+                                <div class="card-right">
+                                    <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">38</span></div>
+                                    <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">1</span></div>
+                                    <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">2</span></div>
+                                    <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Stable</span></div>
+                                </div>
+                            </div>
+
+                            <div class="card" data-id="swirly-axe">
+                                <div class="card-left">
+                                    <div class="card-image-container"><img src="images/SwirlyAxe.webp" alt="Swirly Axe"></div>
+                                    <div class="card-title">Swirly Axe</div>
+                                </div>
+                                <div class="card-right">
+                                    <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">38</span></div>
+                                    <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">1</span></div>
+                                    <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">2</span></div>
+                                    <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Stable</span></div>
+                                </div>
+                            </div>
+
+                            <div class="card" data-id="hallowscythe">
+                                <div class="card-left">
+                                    <div class="card-image-container"><img src="images/Hallowscythe.webp" alt="Hallowscythe"></div>
+                                    <div class="card-title">Hallowscythe</div>
+                                </div>
+                                <div class="card-right">
+                                    <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">30</span></div>
+                                    <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">1</span></div>
+                                    <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">2</span></div>
+                                    <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Stable</span></div>
+                                </div>
+                            </div>
+
+                            <div class="card" data-id="logchopper">
+                                <div class="card-left">
+                                    <div class="card-image-container"><img src="images/Logchopper.webp" alt="Logchopper"></div>
+                                    <div class="card-title">Logchopper</div>
+                                </div>
+                                <div class="card-right">
+                                    <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">18</span></div>
+                                    <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">1</span></div>
+                                    <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">2</span></div>
+                                    <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Stable</span></div>
+                                </div>
+                            </div>
+
+                            <div class="card" data-id="icewing">
+                                <div class="card-left">
+                                    <div class="card-image-container"><img src="images/Icewing.webp" alt="Icewing"></div>
+                                    <div class="card-title">Icewing</div>
+                                </div>
+                                <div class="card-right">
+                                    <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">13</span></div>
+                                    <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">1</span></div>
+                                    <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">2</span></div>
+                                    <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Stable</span></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Tier 2 -->
-                <div class="tier-section" data-tier="2">
-                    <div class="tier-title">Tier 2</div>
-                    <div class="tier-grid">
-                        <div class="card">
-                            <div class="card-left">
-                                <div class="card-image-container"><img src="images/Gingerscope.webp" alt="Gingerscope"></div>
-                                <div class="card-title">Gingerscope</div>
-                            </div>
-                            <div class="card-right">
-                                <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">15,250</span></div>
-                                <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">5</span></div>
-                                <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">4</span></div>
-                                <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Underpaid For</span></div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-left">
-                                <div class="card-image-container"><img src="images/TravelersAxe.webp" alt="Traveler's Axe"></div>
-                                <div class="card-title">Traveler's Axe</div>
-                            </div>
-                            <div class="card-right">
-                                <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">7,850</span></div>
-                                <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">5</span></div>
-                                <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">5</span></div>
-                                <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Stable</span></div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-left">
-                                <div class="card-image-container"><img src="images/Celestial.webp" alt="Celestial"></div>
-                                <div class="card-title">Celestial</div>
-                            </div>
-                            <div class="card-right">
-                                <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">2,250</span></div>
-                                <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">5</span></div>
-                                <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">4</span></div>
-                                <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Stable</span></div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-left">
-                                <div class="card-image-container"><img src="images/VampiresAxe.webp" alt="Vampire's Axe"></div>
-                                <div class="card-title">Vampire's Axe</div>
-                            </div>
-                            <div class="card-right">
-                                <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">1,600</span></div>
-                                <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">5</span></div>
-                                <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">4</span></div>
-                                <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Stable</span></div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-left">
-                                <div class="card-image-container"><img src="images/Harvester.webp" alt="Harvester"></div>
-                                <div class="card-title">Harvester</div>
-                            </div>
-                            <div class="card-right">
-                                <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">250</span></div>
-                                <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">3</span></div>
-                                <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">2</span></div>
-                                <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Stable</span></div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-left">
-                                <div class="card-image-container"><img src="images/Icepiercer.webp" alt="Icepiercer"></div>
-                                <div class="card-title">Icepiercer</div>
-                            </div>
-                            <div class="card-right">
-                                <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">160</span></div>
-                                <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">3</span></div>
-                                <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">2</span></div>
-                                <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Stable</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tier 1 -->
-                <div class="tier-section" data-tier="1">
-                    <div class="tier-title">Tier 1</div>
-                    <div class="tier-grid">
-                        <div class="card">
-                            <div class="card-left">
-                                <div class="card-image-container"><img src="images/Icebreaker.webp" alt="Icebreaker"></div>
-                                <div class="card-title">Icebreaker</div>
-                            </div>
-                            <div class="card-right">
-                                <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">65</span></div>
-                                <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">1</span></div>
-                                <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">2</span></div>
-                                <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Stable</span></div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-left">
-                                <div class="card-image-container"><img src="images/Batwing.webp" alt="Batwing"></div>
-                                <div class="card-title">Batwing</div>
-                            </div>
-                            <div class="card-right">
-                                <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">42</span></div>
-                                <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">1</span></div>
-                                <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">2</span></div>
-                                <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Stable</span></div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-left">
-                                <div class="card-image-container"><img src="images/ElderwoodScythe.webp" alt="Elderwood Scythe"></div>
-                                <div class="card-title">Elderwood Scythe</div>
-                            </div>
-                            <div class="card-right">
-                                <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">38</span></div>
-                                <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">1</span></div>
-                                <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">2</span></div>
-                                <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Stable</span></div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-left">
-                                <div class="card-image-container"><img src="images/SwirlyAxe.webp" alt="Swirly Axe"></div>
-                                <div class="card-title">Swirly Axe</div>
-                            </div>
-                            <div class="card-right">
-                                <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">38</span></div>
-                                <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">1</span></div>
-                                <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">2</span></div>
-                                <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Stable</span></div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-left">
-                                <div class="card-image-container"><img src="images/Hallowscythe.webp" alt="Hallowscythe"></div>
-                                <div class="card-title">Hallowscythe</div>
-                            </div>
-                            <div class="card-right">
-                                <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">30</span></div>
-                                <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">1</span></div>
-                                <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">2</span></div>
-                                <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Stable</span></div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-left">
-                                <div class="card-image-container"><img src="images/Logchopper.webp" alt="Logchopper"></div>
-                                <div class="card-title">Logchopper</div>
-                            </div>
-                            <div class="card-right">
-                                <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">18</span></div>
-                                <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">1</span></div>
-                                <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">2</span></div>
-                                <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Stable</span></div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-left">
-                                <div class="card-image-container"><img src="images/Icewing.webp" alt="Icewing"></div>
-                                <div class="card-title">Icewing</div>
-                            </div>
-                            <div class="card-right">
-                                <div class="stat-row"><span class="stat-label">Value:</span><span class="stat-value">13</span></div>
-                                <div class="stat-row"><span class="stat-label">Demand:</span><span class="stat-value">1</span></div>
-                                <div class="stat-row"><span class="stat-label">Rarity:</span><span class="stat-value">2</span></div>
-                                <div class="stat-row"><span class="stat-label">Stability:</span><span class="stat-value">Stable</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Единый плоский контейнер (для режима OFF) -->
+                <div id="flatContainer" class="flat-container"></div>
 
             </div>
             <!-- Vintages -->
@@ -517,30 +529,56 @@
 
         let tiersEnabled = true;
 
+        // Порядок карточек для возврата в тиры при включении ON
+        const cardOrder = [
+            "niks-scythe", 
+            "gingerscope", "travelers-axe", "celestial", "vampires-axe", "harvester", "icepiercer",
+            "icebreaker", "batwing", "elderwood-scythe", "swirly-axe", "hallowscythe", "logchopper", "icewing"
+        ];
+
         function toggleTiers() {
             tiersEnabled = !tiersEnabled;
             const btn = document.getElementById('tiersBtn');
-            const tierTitles = document.querySelectorAll('.tier-title');
-            const tierSections = document.querySelectorAll('.tier-section');
+            const tiersContainer = document.getElementById('tiersContainer');
+            const flatContainer = document.getElementById('flatContainer');
 
             if (tiersEnabled) {
                 btn.classList.add('on');
                 btn.textContent = 'ON';
-                tierTitles.forEach(title => {
-                    title.style.display = 'block';
+                
+                // Собираем все карточки из плоского контейнера и возвращаем обратно по тирам
+                const allCards = Array.from(flatContainer.querySelectorAll('.card'));
+                
+                cardOrder.forEach(id => {
+                    const card = allCards.find(c => c.getAttribute('data-id') === id);
+                    if (card) {
+                        if (id === "niks-scythe") {
+                            document.querySelector('.tier-section[data-tier="3"] .tier-grid').appendChild(card);
+                        } else if (["gingerscope", "travelers-axe", "celestial", "vampires-axe", "harvester", "icepiercer"].includes(id)) {
+                            document.querySelector('.tier-section[data-tier="2"] .tier-grid').appendChild(card);
+                        } else {
+                            document.querySelector('.tier-section[data-tier="1"] .tier-grid').appendChild(card);
+                        }
+                    }
                 });
-                tierSections.forEach(section => {
-                    section.style.gap = '12px';
-                });
+
+                tiersContainer.style.display = 'flex';
+                flatContainer.style.display = 'none';
             } else {
                 btn.classList.remove('on');
                 btn.textContent = 'OFF';
-                tierTitles.forEach(title => {
-                    title.style.display = 'none';
+                
+                // Переносим все карточки в единый плоский список
+                flatContainer.innerHTML = '';
+                cardOrder.forEach(id => {
+                    const card = document.querySelector(`.card[data-id="${id}"]`);
+                    if (card) {
+                        flatContainer.appendChild(card);
+                    }
                 });
-                tierSections.forEach(section => {
-                    section.style.gap = '0px';
-                });
+
+                tiersContainer.style.display = 'none';
+                flatContainer.style.display = 'grid';
             }
         }
     </script>
