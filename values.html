@@ -147,14 +147,7 @@
             padding-bottom: 24px;
         }
 
-        /* Контейнер для режима без тиров (когда OFF) */
-        .flat-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 20px;
-        }
-
-        /* Секция тира (когда ON) */
+        /* Секция тира */
         .tier-section {
             display: flex;
             flex-direction: column;
@@ -171,13 +164,14 @@
             padding-left: 8px;
         }
 
-        .tier-grid {
+        /* Базовые сетки (по умолчанию size = 1x -> 3 в ряд) */
+        .tier-grid, .flat-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
 
-        /* Стили горизонтальной карточки (базовый размер 1x) */
+        /* Стили горизонтальной карточки */
         .card {
             background-color: #1E2028;
             border-radius: 16px;
@@ -190,7 +184,6 @@
             transition: background-color 0.2s ease;
             cursor: pointer;
             gap: 20px;
-            transform-origin: left center;
         }
 
         .card:hover {
@@ -293,9 +286,9 @@
             </div>
             <div class="sub-bar-group">
                 <span class="sub-bar-label">Size:</span>
-                <button id="size-075" class="control-btn" onclick="setSize(0.75)">0.75x</button>
-                <button id="size-1" class="control-btn active-size" onclick="setSize(1)">1x</button>
-                <button id="size-125" class="control-btn" onclick="setSize(1.25)">1.25x</button>
+                <button id="size-075" class="control-btn" onclick="setSize(0.75, 5)">0.75x</button>
+                <button id="size-1" class="control-btn active-size" onclick="setSize(1, 3)">1x</button>
+                <button id="size-125" class="control-btn" onclick="setSize(1.25, 2)">1.25x</button>
             </div>
         </div>
 
@@ -309,13 +302,13 @@
             <!-- Ancients -->
             <div id="ancients" class="tab-content">
                 
-                <!-- Контейнер для отображения с тирами -->
+                <!-- Контейнер для режима с тирами -->
                 <div id="tiersContainer">
                     <!-- Tier 3 -->
                     <div class="tier-section" data-tier="3">
                         <div class="tier-title">Tier 3</div>
-                        <div class="tier-grid">
-                            <div class="card">
+                        <div class="tier-grid main-grid-layout">
+                            <div class="card" data-id="niks-scythe">
                                 <div class="card-left">
                                     <div class="card-image-container"><img src="images/NiksScythe.webp" alt="Nik's Scythe"></div>
                                     <div class="card-title">Nik's Scythe</div>
@@ -333,8 +326,8 @@
                     <!-- Tier 2 -->
                     <div class="tier-section" data-tier="2">
                         <div class="tier-title">Tier 2</div>
-                        <div class="tier-grid">
-                            <div class="card">
+                        <div class="tier-grid main-grid-layout">
+                            <div class="card" data-id="gingerscope">
                                 <div class="card-left">
                                     <div class="card-image-container"><img src="images/Gingerscope.webp" alt="Gingerscope"></div>
                                     <div class="card-title">Gingerscope</div>
@@ -347,7 +340,7 @@
                                 </div>
                             </div>
 
-                            <div class="card">
+                            <div class="card" data-id="travelers-axe">
                                 <div class="card-left">
                                     <div class="card-image-container"><img src="images/TravelersAxe.webp" alt="Traveler's Axe"></div>
                                     <div class="card-title">Traveler's Axe</div>
@@ -360,7 +353,7 @@
                                 </div>
                             </div>
 
-                            <div class="card">
+                            <div class="card" data-id="celestial">
                                 <div class="card-left">
                                     <div class="card-image-container"><img src="images/Celestial.webp" alt="Celestial"></div>
                                     <div class="card-title">Celestial</div>
@@ -373,7 +366,7 @@
                                 </div>
                             </div>
 
-                            <div class="card">
+                            <div class="card" data-id="vampires-axe">
                                 <div class="card-left">
                                     <div class="card-image-container"><img src="images/VampiresAxe.webp" alt="Vampire's Axe"></div>
                                     <div class="card-title">Vampire's Axe</div>
@@ -386,7 +379,7 @@
                                 </div>
                             </div>
 
-                            <div class="card">
+                            <div class="card" data-id="harvester">
                                 <div class="card-left">
                                     <div class="card-image-container"><img src="images/Harvester.webp" alt="Harvester"></div>
                                     <div class="card-title">Harvester</div>
@@ -399,7 +392,7 @@
                                 </div>
                             </div>
 
-                            <div class="card">
+                            <div class="card" data-id="icepiercer">
                                 <div class="card-left">
                                     <div class="card-image-container"><img src="images/Icepiercer.webp" alt="Icepiercer"></div>
                                     <div class="card-title">Icepiercer</div>
@@ -417,8 +410,8 @@
                     <!-- Tier 1 -->
                     <div class="tier-section" data-tier="1">
                         <div class="tier-title">Tier 1</div>
-                        <div class="tier-grid">
-                            <div class="card">
+                        <div class="tier-grid main-grid-layout">
+                            <div class="card" data-id="icebreaker">
                                 <div class="card-left">
                                     <div class="card-image-container"><img src="images/Icebreaker.webp" alt="Icebreaker"></div>
                                     <div class="card-title">Icebreaker</div>
@@ -431,7 +424,7 @@
                                 </div>
                             </div>
 
-                            <div class="card">
+                            <div class="card" data-id="batwing">
                                 <div class="card-left">
                                     <div class="card-image-container"><img src="images/Batwing.webp" alt="Batwing"></div>
                                     <div class="card-title">Batwing</div>
@@ -444,7 +437,7 @@
                                 </div>
                             </div>
 
-                            <div class="card">
+                            <div class="card" data-id="elderwood-scythe">
                                 <div class="card-left">
                                     <div class="card-image-container"><img src="images/ElderwoodScythe.webp" alt="Elderwood Scythe"></div>
                                     <div class="card-title">Elderwood Scythe</div>
@@ -457,7 +450,7 @@
                                 </div>
                             </div>
 
-                            <div class="card">
+                            <div class="card" data-id="swirly-axe">
                                 <div class="card-left">
                                     <div class="card-image-container"><img src="images/SwirlyAxe.webp" alt="Swirly Axe"></div>
                                     <div class="card-title">Swirly Axe</div>
@@ -470,7 +463,7 @@
                                 </div>
                             </div>
 
-                            <div class="card">
+                            <div class="card" data-id="hallowscythe">
                                 <div class="card-left">
                                     <div class="card-image-container"><img src="images/Hallowscythe.webp" alt="Hallowscythe"></div>
                                     <div class="card-title">Hallowscythe</div>
@@ -483,7 +476,7 @@
                                 </div>
                             </div>
 
-                            <div class="card">
+                            <div class="card" data-id="logchopper">
                                 <div class="card-left">
                                     <div class="card-image-container"><img src="images/Logchopper.webp" alt="Logchopper"></div>
                                     <div class="card-title">Logchopper</div>
@@ -496,7 +489,7 @@
                                 </div>
                             </div>
 
-                            <div class="card">
+                            <div class="card" data-id="icewing">
                                 <div class="card-left">
                                     <div class="card-image-container"><img src="images/Icewing.webp" alt="Icewing"></div>
                                     <div class="card-title">Icewing</div>
@@ -512,11 +505,9 @@
                     </div>
                 </div>
 
-                <!-- Контейнер для режима без тиров (скрыт по умолчанию, показывается при OFF) -->
+                <!-- Контейнер для режима без тиров (OFF) -->
                 <div id="flatContainer" style="display: none;">
-                    <div class="flat-grid" id="flatGrid">
-                        <!-- Сюда скрипт автоматически соберет все карточки при выключении тиров -->
-                    </div>
+                    <div class="flat-grid main-grid-layout" id="flatGrid"></div>
                 </div>
 
             </div>
@@ -552,6 +543,13 @@
 
         let tiersEnabled = true;
 
+        // Порядок карточек для возврата обратно в тиры при включении ON
+        const initialCardOrder = [
+            "niks-scythe", 
+            "gingerscope", "travelers-axe", "celestial", "vampires-axe", "harvester", "icepiercer",
+            "icebreaker", "batwing", "elderwood-scythe", "swirly-axe", "hallowscythe", "logchopper", "icewing"
+        ];
+
         function toggleTiers() {
             tiersEnabled = !tiersEnabled;
             const btn = document.getElementById('tiersBtn');
@@ -562,18 +560,34 @@
             if (tiersEnabled) {
                 btn.classList.add('on');
                 btn.textContent = 'ON';
+                
+                // Возвращаем карточки из единого списка обратно по своим тирам в исходном порядке
+                const allCards = Array.from(flatGrid.querySelectorAll('.card'));
+                
+                initialCardOrder.forEach(id => {
+                    const card = allCards.find(c => c.getAttribute('data-id') === id);
+                    if (card) {
+                        if (id === "niks-scythe") {
+                            document.querySelector('.tier-section[data-tier="3"] .tier-grid').appendChild(card);
+                        } else if (["gingerscope", "travelers-axe", "celestial", "vampires-axe", "harvester", "icepiercer"].includes(id)) {
+                            document.querySelector('.tier-section[data-tier="2"] .tier-grid').appendChild(card);
+                        } else {
+                            document.querySelector('.tier-section[data-tier="1"] .tier-grid').appendChild(card);
+                        }
+                    }
+                });
+
                 tiersContainer.style.display = 'flex';
                 flatContainer.style.display = 'none';
             } else {
                 btn.classList.remove('on');
                 btn.textContent = 'OFF';
                 
-                // Собираем все карточки из тиров в один плоский список
+                // Собираем все карточки со всех тиров в единый плоский список
                 flatGrid.innerHTML = '';
                 const allCards = tiersContainer.querySelectorAll('.card');
                 allCards.forEach(card => {
-                    // Клонируем карточки, чтобы сохранить их текущий масштаб и состояние
-                    flatGrid.appendChild(card.cloneNode(true));
+                    flatGrid.appendChild(card);
                 });
 
                 tiersContainer.style.display = 'none';
@@ -581,7 +595,7 @@
             }
         }
 
-        function setSize(scale) {
+        function setSize(scale, columnsCount) {
             // Подсветка активной кнопки размера
             document.getElementById('size-075').classList.remove('active-size');
             document.getElementById('size-1').classList.remove('active-size');
@@ -591,10 +605,10 @@
             if (scale === 1) document.getElementById('size-1').classList.add('active-size');
             if (scale === 1.25) document.getElementById('size-125').classList.add('active-size');
 
-            // Применяем масштаб к каждой карточке в обоих контейнерах
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                card.style.transform = `scale(${scale})`;
+            // Меняем количество колонок в сетках для соответствия требованиям (5, 3 или 2 в ряд)
+            const grids = document.querySelectorAll('.main-grid-layout');
+            grids.forEach(grid => {
+                grid.style.gridTemplateColumns = `repeat(${columnsCount}, 1fr)`;
             });
         }
     </script>
